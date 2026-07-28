@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Огородный кликер</title>
+<link rel="stylesheet" href="css/style.css?v=9">
+</head>
+<body>
+
+  <div id="screen-menu" class="screen">
+    <h1 data-i18n="menu.title">Огородный кликер</h1>
+    <button id="btn-play" data-i18n="menu.play">Играть</button>
+    <button class="sound-toggle" id="btn-sound-menu">Звук: вкл</button>
+  </div>
+
+  <div id="screen-game" class="screen">
+    <canvas id="fx-canvas"></canvas>
+    <div class="game-header">
+      <button class="sound-toggle" id="btn-sound-game">Звук: вкл</button>
+    </div>
+    <div class="resource-display">
+      <span data-i18n="resource.a.label">Урожай</span>: <span id="resource-a-value">0</span>
+      <span class="boost-indicator">
+        (<span data-i18n="boost.label">Ускорение роста</span> <span id="boost-multiplier-value">×1.00</span>)
+      </span>
+    </div>
+    <div id="tap-target" class="tap-target"></div>
+
+    <div class="resource-display resource-display-b">
+      <span data-i18n="resource.b.label">Солнце</span>: <span id="resource-b-value">0</span>
+    </div>
+    <div id="tap-target-b" class="tap-target tap-target-b"></div>
+
+    <div class="shop-panel">
+      <div class="shop-tier-label">
+        <span data-i18n="upgrade.tier_label">Стадия</span>: <span id="upgrade-tier-value">Пустая грядка</span>
+      </div>
+      <button id="btn-buy-upgrade" class="shop-buy-btn">
+        <span id="upgrade-buy-label" data-i18n="upgrade.buy">Ухаживать за грядкой</span>: <span id="upgrade-cost-value">10</span>
+      </button>
+    </div>
+    <button id="btn-watch-rewarded" class="rewarded-btn">
+      <span id="rewarded-idle-label">
+        <span data-i18n="rewarded.watch_prefix">Позвать дождь: ×2 урожай на</span>
+        <span id="rewarded-minutes-value">5</span>
+        <span data-i18n="time.minutes_suffix">мин</span>
+      </span>
+      <span id="rewarded-active-label" style="display:none"></span>
+    </button>
+    <button id="btn-open-prestige" data-i18n="game.prestige_open">Новый сезон</button>
+    <button id="btn-back-to-menu" data-i18n="game.back">В меню</button>
+  </div>
+
+  <div id="overlay-prestige" class="overlay">
+    <div class="overlay-panel">
+      <h1 data-i18n="prestige.title">Новый сезон</h1>
+      <p>
+        <span data-i18n="prestige.multiplier_label">Плодородие почвы</span>:
+        <span id="prestige-multiplier-value">×1.00</span>
+      </p>
+      <p>
+        <span data-i18n="prestige.gain_label">Получите плодородия</span>:
+        <span id="prestige-gain-value">0</span>
+      </p>
+      <button id="btn-confirm-prestige" data-i18n="prestige.confirm">Собрать урожай и начать новый сезон</button>
+      <button id="btn-close-prestige" data-i18n="prestige.close">Закрыть</button>
+    </div>
+  </div>
+
+  <div id="overlay-offline" class="overlay">
+    <div class="overlay-panel">
+      <h1 data-i18n="offline.title">С возвращением на огород</h1>
+      <p>
+        <span data-i18n="offline.gained_prefix">Пока вас не было, урожай подрос:</span>
+        <span id="offline-gained-value">0</span>
+      </p>
+      <button id="btn-close-offline" data-i18n="offline.collect">Собрать</button>
+    </div>
+  </div>
+
+  <div id="overlay-daily" class="overlay">
+    <div class="overlay-panel">
+      <h1 data-i18n="daily.title">Утренняя роса</h1>
+      <p><span data-i18n="daily.day_label">День ухода за огородом</span> <span id="daily-day-value">1</span></p>
+      <p>
+        <span data-i18n="daily.reward_prefix">Собрано:</span>
+        <span id="daily-reward-value">0</span>
+      </p>
+      <button id="btn-close-daily" data-i18n="daily.collect">Забрать</button>
+    </div>
+  </div>
+
+  <script src="vk-bridge.min.js"></script>
+  <script src="js/platform/vk.js?v=1"></script>
+  <script src="js/core/i18n.js?v=9"></script>
+  <script src="js/core/save.js?v=9"></script>
+  <script src="js/core/screens.js?v=3"></script>
+  <script src="js/core/format.js?v=1"></script>
+  <script src="js/config/tiers.js?v=1"></script>
+  <script src="js/core/upgrades.js?v=1"></script>
+  <script src="js/core/prestige.js?v=1"></script>
+  <script src="js/core/rewarded.js?v=1"></script>
+  <script src="js/core/economy.js?v=5"></script>
+  <script src="js/core/offline.js?v=2"></script>
+  <script src="js/core/daily.js?v=1"></script>
+  <script src="js/core/ads.js?v=1"></script>
+  <script src="js/core/sound.js?v=1"></script>
+  <script src="js/core/effects.js?v=1"></script>
+  <script src="js/main.js?v=10"></script>
+</body>
+</html>
